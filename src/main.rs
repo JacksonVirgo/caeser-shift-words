@@ -1,6 +1,11 @@
 use std::collections::HashSet;
 use std::time::Instant;
 
+const RED: &str = "\x1b[31m";
+const GREEN: &str = "\x1b[32m";
+const BLUE: &str = "\x1b[34m";
+const COLOUR_RESET: &str = "\x1b[0m";
+
 fn caesar_shift(word: &str, shift: usize) -> String {
     word.chars()
         .map(|c| {
@@ -61,8 +66,10 @@ fn main() {
 
     for (original_word, shift, new_word) in results {
         println!(
-            "Original Word: '{}', Shift: {}, New Word: '{}'",
-            original_word, shift, new_word
+            "{} -> {} via {}",
+            format!("{}{}{}", RED, original_word, COLOUR_RESET),
+            format!("{}{}{}", GREEN, new_word, COLOUR_RESET),
+            format!("{}{}{}", BLUE, shift, COLOUR_RESET)
         );
     }
 }
